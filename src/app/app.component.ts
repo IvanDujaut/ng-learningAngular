@@ -9,6 +9,7 @@ import { Product } from './models/product.model'
 })
 export class AppComponent {
   imgParent = '';//https://source.unsplash.com/random
+  showImg = true;
   products: Product[] = [
     {
       id: '1',
@@ -39,5 +40,9 @@ export class AppComponent {
   public onLoaded(img: string) {
     console.log('log padre', img);
 
+  }
+
+  public stopCounter(): void {
+    this.showImg = !this.showImg;
   }
 }
