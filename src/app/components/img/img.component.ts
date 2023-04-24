@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, Output, EventEmitter, OnChanges, AfterViewInit, OnDestroy } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter, OnChanges, AfterViewInit, OnDestroy, SimpleChanges } from '@angular/core';
 
 @Component({
   selector: 'app-img',
@@ -7,7 +7,17 @@ import { Component, OnInit, Input, Output, EventEmitter, OnChanges, AfterViewIni
 })
 export class ImgComponent implements OnInit, OnChanges, AfterViewInit, OnDestroy {
 
-  @Input() imgValueChild: string = '';
+  imgValueChild: string = '';
+
+  @Input('img') set changeImg(newImg: string) {
+    this.imgValueChild = newImg;
+    console.log('change just img =>', this.imgValueChild);
+
+    //code
+  }
+  @Input() alt: string = '';
+
+
   @Output() loaded = new EventEmitter<string>();
   imageDefault = './assets/images/default.png';
   counter = 0;
@@ -20,11 +30,11 @@ export class ImgComponent implements OnInit, OnChanges, AfterViewInit, OnDestroy
 
   }
 
-  ngOnChanges(): void {
+  ngOnChanges(changes: SimpleChanges): void {
     // before - during render
     // changes inputs -- N times
     console.log('ngOnChanges', 'imgValue =>', this.imgValueChild);
-
+    console.log('changes', changes);
   }
 
   ngOnInit(): void {
