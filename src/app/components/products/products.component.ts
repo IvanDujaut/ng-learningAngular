@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
 import { Product } from '../../models/product.model'
+import { log } from 'console';
 
 @Component({
   selector: 'app-products',
@@ -9,7 +10,10 @@ import { Product } from '../../models/product.model'
 })
 export class ProductsComponent implements OnInit {
 
-  products: Product[] = [
+  public myCart: Product[] = [];
+  public total = 0;
+
+  public products: Product[] = [
     {
       id: '1',
       name: 'El mejor juguete',
@@ -39,6 +43,12 @@ export class ProductsComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
+  }
+
+  onAddToShoppingCart(product: Product) {
+    console.log(product);
+    this.myCart.push(product);
+    this.total = this.myCart.reduce((sum, item) => sum + item.price, 0);
   }
 
 }

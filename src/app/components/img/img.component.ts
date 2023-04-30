@@ -11,7 +11,7 @@ export class ImgComponent implements OnInit, OnChanges, AfterViewInit, OnDestroy
 
   @Input('img') set changeImg(newImg: string) {
     this.imgValueChild = newImg;
-    console.log('change just img =>', this.imgValueChild);
+    //console.log('change just img =>', this.imgValueChild);
     //code
   }
   @Input() alt: string = '';
@@ -25,21 +25,21 @@ export class ImgComponent implements OnInit, OnChanges, AfterViewInit, OnDestroy
   constructor() {
     // before render
     // NO async -- once time
-    console.log('constructor', 'imgValue =>' ,this.imgValueChild);
+    //console.log('constructor', 'imgValue =>' ,this.imgValueChild);
 
   }
 
   ngOnChanges(changes: SimpleChanges): void {
     // before - during render
     // changes inputs -- N times
-    console.log('ngOnChanges', 'imgValue =>', this.imgValueChild);
+    //console.log('ngOnChanges', 'imgValue =>', this.imgValueChild);
     // console.log('changes', changes);
   }
 
   ngOnInit(): void {
     // before render
     // async - fetch -- once time
-    console.log('ngOnInit', 'imgValue =>', this.imgValueChild);
+    //console.log('ngOnInit', 'imgValue =>', this.imgValueChild);
     // this.counterFn = window.setInterval(() => {
     //   this.counter++;
     //   console.log('run counter');
@@ -51,12 +51,12 @@ export class ImgComponent implements OnInit, OnChanges, AfterViewInit, OnDestroy
     // handler children. Manejamos los hijos de este componente de forma
     // programatica y no desde el template (<ng-template>). Debido a que
     // este componente ya se encuentra renderizado. Generalmente se ejecutan directivas
-    console.log('ngAfterViewInit');
+    //console.log('ngAfterViewInit');
   }
 
   ngOnDestroy(): void {
     // delete
-    console.log('ngOnDestroy');
+    //console.log('ngOnDestroy');
     // window.clearInterval(this.counterFn);
   }
 
@@ -65,7 +65,7 @@ export class ImgComponent implements OnInit, OnChanges, AfterViewInit, OnDestroy
   }
 
   public imgLoaded() {
-    console.log('log del hijo');
+    //console.log('log del hijo');
     //Cuando se carga correctamente quiero transmitir ese evento:
     this.loaded.emit(this.imgValueChild);
   }
