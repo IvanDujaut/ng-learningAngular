@@ -1,5 +1,7 @@
 <h3>Cantidad: {{myShoppingCart.length}}</h3>
-<p>Total a pagar: ${{total}}</p>
+<p>Total a pagar: {{total}}</p>
+<p>Fecha actual: {{today | date: 'dd/MM/YYYY' }}</p>
+<P>Dif: {{otherDay | timeAgo}}</P>
 <div class="products--grid">
   <app-product
     [product]="product"
