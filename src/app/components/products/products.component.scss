@@ -1,22 +1,130 @@
 .products--grid {
   display: flex;
   flex-direction: column;
+  padding: 3em;
 }
 
 .product-detail {
   position: fixed;
-  top: 0;
-  left: 50%;
+  top: 59px;
+  border-top-left-radius: 10px;
+  left: 75%;
   bottom: 0;
   right: 0;
   background-color: white;
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
-  transition: all ease-out .5s;
+  transition: all ease-out 0.5s;
   transform: translateX(100%);
-  &.active{
+  &.active {
     transform: translateX(0);
+  }
+  &__content {
+    display: flex;
+    flex-direction: column;
+    row-gap: 2.5rem;
+    justify-content: space-between;
+    .product-detail-img {
+      button {
+        position: absolute;
+        top: 12px;
+        left: 15px;
+        z-index: 99;
+        background: #ffffff;
+        box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.15);
+        width: 2rem;
+        height: 2rem;
+        border-radius: 50%;
+        cursor: pointer;
+        transition: all 0.3s ease-in-out;
+
+        &:hover,
+        &:focus {
+          color: black;
+          outline: none;
+        }
+
+        &:active {
+          transform: translateY(2px);
+        }
+      }
+      .swiper-img {
+        width: 100%;
+        height: auto;
+        object-fit: cover;
+        border-radius: 10px;
+      }
+    }
+    .content-description {
+      display: flex;
+      flex-direction: column;
+      row-gap: 1.3rem;
+      padding: 0 2rem;
+      &-main {
+        display: flex;
+        flex-direction: column;
+        row-gap: 0.5rem;
+        .product-detail-price {
+          font-family: "Roboto";
+          font-style: normal;
+          font-weight: 700;
+          font-size: 18px;
+          line-height: 21px;
+          color: #404040;
+        }
+        .product-detail-title {
+          font-family: "Quicksand";
+          font-style: normal;
+          font-weight: 400;
+          font-size: 18px;
+          line-height: 22px;
+          color: #797979;
+        }
+      }
+      .product-detail-description {
+        font-family: "Quicksand";
+        font-style: normal;
+        font-weight: 400;
+        font-size: 16px;
+        line-height: 20px;
+        color: #797979;
+      }
+      .btn-addToCart {
+        background: #acd9b2;
+        border: 1px solid #acd9b2;
+        box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.0001);
+        border-radius: 10px;
+        cursor: pointer;
+        transition: all 0.3s ease-in-out;
+
+        &:hover,
+        &:focus {
+          color: black;
+          outline: none;
+        }
+
+        &:active {
+          transform: translateY(2px);
+        }
+        .btn-content {
+          display: flex;
+          column-gap: 0.6rem;
+          justify-content: center;
+          align-items: center;
+          padding: 1rem 2rem;
+          p {
+            font-family: "Quicksand";
+            font-style: normal;
+            font-weight: 700;
+            font-size: 18px;
+            line-height: 22px;
+            text-align: center;
+            color: #ffffff;
+          }
+        }
+      }
+    }
   }
 }
 

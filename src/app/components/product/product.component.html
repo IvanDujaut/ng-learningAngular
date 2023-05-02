@@ -1,7 +1,22 @@
 <!-- <img width="100" [src]="product.image" alt=""> -->
-<app-img *ngIf="product.images.length > 0" [img]="product.images[0]"></app-img>
-<h2>{{product.title}}</h2> <!--<h2>{{product.title | reverse }}</h2>-->
-<p>{{product.description}}</p> <!--<p appHighlight>{{product.description}}</p>-->
-<p>{{product.price | currency:'USD' }}</p>
-<button (click)="onAddToCart()">Add cart</button>
-<button (click)="onShowProductDetail()">Show Details</button>
+<div class="product-container">
+  <button (click)="onShowProductDetail()" class="btn-image">
+    <app-img
+      *ngIf="product.images.length > 0"
+      [img]="product.images[0]"
+    ></app-img>
+  </button>
+  <div class="content-info">
+    <div class="price-title">
+      <p class="price">{{ product.price | currency : "USD" }}</p>
+      <h2 class="product-title">{{ product.title }}</h2>
+    </div>
+    <button (click)="onAddToCart()" class="btn-addToCart">
+      <img src="./assets/svg/bt_add_to_cart.svg" alt="button add to cart logo">
+    </button>
+  </div>
+</div>
+
+<!--<h2>{{product.title | reverse }}</h2>-->
+<!--<p appHighlight>{{product.description}}</p>-->
+
