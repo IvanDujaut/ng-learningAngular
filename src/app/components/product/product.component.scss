@@ -1,3 +1,49 @@
-p, h2 {
+p,
+h2 {
   margin: 0;
+}
+
+.product-container {
+  display: flex;
+  flex-direction: column;
+  row-gap: 1rem;
+  .btn-image, .btn-addToCart {
+    all: unset;
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
+
+    &:hover,
+    &:focus {
+      color: black;
+      outline: none;
+    }
+
+    &:active {
+      transform: translateY(2px);
+    }
+  }
+
+  .content-info {
+    display: flex;
+    justify-content: space-between;
+    .price-title {
+      display: flex;
+      flex-direction: column;
+      .price {
+        font-family: "Roboto";
+        font-weight: 700;
+        font-size: 16px;
+        line-height: 19px;
+        color: #404040;
+      }
+      .product-title {
+        font-family: "Quicksand";
+        font-style: normal;
+        font-weight: 400;
+        font-size: 14px;
+        line-height: 18px;
+        color: #797979;
+      }
+    }
+  }
 }
