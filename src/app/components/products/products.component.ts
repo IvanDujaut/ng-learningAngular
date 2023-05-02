@@ -12,10 +12,8 @@ import { ProductsService } from '../../services/products.service';
 export class ProductsComponent implements OnInit {
   public myShoppingCart: Product[] = [];
   public total = 0;
-  public today = new Date();
-  public otherDay = new Date(2021, 10, 28);
-
   public products: Product[] = [];
+  public showProductDetail = false;
 
   constructor(
     private storeService: StoreService,
@@ -34,5 +32,16 @@ export class ProductsComponent implements OnInit {
     console.log(product);
     this.storeService.addProduct(product);
     this.total = this.storeService.getTotalPrice();
+  }
+
+  public toggleProductDetail(): void {
+    this.showProductDetail = !this.showProductDetail;
+  }
+
+  public onShowProductDetail(id: string): void {
+    this.productsService.getProductById(id)
+    .subscribe((productDetails) => {
+      console.log(productDetails);
+    })
   }
 }
