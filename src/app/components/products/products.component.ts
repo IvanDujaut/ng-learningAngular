@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 
-import { Product } from '../../models/product.model';
+import { Product, CreateProductDTO } from '../../models/product.model';
 import { StoreService } from '../../services/store.service';
 import { ProductsService } from '../../services/products.service';
 
@@ -21,10 +21,10 @@ export class ProductsComponent implements OnInit {
     description: '',
     category: {
       id: 0,
-      name: ''
+      name: '',
     },
-    images: []
-  }
+    images: [],
+  };
 
   constructor(
     private storeService: StoreService,
@@ -39,7 +39,7 @@ export class ProductsComponent implements OnInit {
     });
   }
 
-  onAddToShoppingCart(product: Product) {
+  public onAddToShoppingCart(product: Product) {
     console.log(product);
     this.storeService.addProduct(product);
     this.total = this.storeService.getTotalPrice();
@@ -50,11 +50,23 @@ export class ProductsComponent implements OnInit {
   }
 
   public onShowProductDetail(id: string): void {
-    this.productsService.getProductById(id)
-    .subscribe((productDetails) => {
-      console.log(productDetails);
+    this.productsService.getProductById(id).subscribe((productDetails) => {
       this.toggleProductDetail();
       this.productChosen = productDetails;
+    });
+  }
+
+  public createNewProduct() {
+    const product: CreateProductDTO = {
+      title: 'New product created from dto',
+      price: 1000,
+      description: 'bla bla bla',
+      images: ['https://placeimg.com/640/480/any'],
+      categoryId: 2,
+    };
+    this.productsService.create(product)
+    .subscribe(newProduct => {
+      this.products.unshift(newProduct);
     })
   }
 }
