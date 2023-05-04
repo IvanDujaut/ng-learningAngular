@@ -1,7 +1,8 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http'
 
-import { Product } from '../models/product.model'
+import { Product, CreateProductDTO } from '../models/product.model'
+import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -18,5 +19,9 @@ export class ProductsService {
 
   getProductById(id: string) {
     return this.http.get<Product>(`${this.apiUrl}/${id}`);
+  }
+
+  create(dto: CreateProductDTO): Observable<Product> { //porque necesito que sea un Observable para el post?
+    return this.http.post<Product>(this.apiUrl, dto);
   }
 }
